@@ -1,0 +1,46 @@
+In machine learning, we couldn’t fit the model on the training data and can’t say that the model will work accurately for the real data. 
+For this, we must assure that our model got the correct patterns from the data, and it is not getting up too much noise. For this purpose, we use the cross-validation technique.
+
+
+Cross-Validation:
+Cross-validation is a technique in which we train our model using the subset of the data-set and then evaluate using the complementary subset of the data-set.
+The three steps involved in cross-validation are as follows :
+Reserve some portion of sample data-set.
+Using the rest data-set train the model.
+Test the model using the reserve portion of the data-set.
+Methods of Cross Validation
+
+Validation:
+In this method, we perform training on the 50% of the given data-set and rest 50% is used for the testing purpose. 
+The major drawback of this method is that we perform training on the 50% of the dataset, it may possible that the remaining 50% of the data contains some important 
+information which we are leaving while training our model i.e higher bias.
+
+LOOCV (Leave One Out Cross Validation)
+In this method, we perform training on the whole data-set but leaves only one data-point of the available data-set and then iterates for each data-point. 
+It has some advantages as well as disadvantages also.
+An advantage of using this method is that we make use of all data points and hence it is low bias.
+The major drawback of this method is that it leads to higher variation in the testing model as we are testing against one data point. 
+If the data point is an outlier it can lead to higher variation. Another drawback is it takes a lot of execution time as it iterates over ‘the number of data points’ times.
+
+K-Fold Cross Validation
+In this method, we split the data-set into k number of subsets(known as folds) then we perform training on the all 
+the subsets but leave one(k-1) subset for the evaluation of the trained model. In this method, we iterate k times with a different subset reserved for testing purpose each time.
+
+Advantages of train/test split:
+This runs K times faster than Leave One Out cross-validation because K-fold cross-validation repeats the train/test split K-times.
+Simpler to examine the detailed results of the testing process.
+
+Advantages of cross-validation:
+More accurate estimate of out-of-sample accuracy.
+More “efficient” use of data as every observation is used for both training and testing.
+
+for eg: Python code for k fold cross-validation.
+
+# This code may not be run on GFG IDE 
+# as required packages are not found. 
+ # importing cross-validation from sklearn package.
+from sklearn import cross_validation
+# value of K is 10.
+data = cross_validation.KFold(len(train_set), n_folds=10, indices=False)
+
+Reference: https://www.analyticsvidhya.com/blog/2015/11/improve-model-performance-cross-validation-in-python-r/
